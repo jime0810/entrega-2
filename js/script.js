@@ -30,5 +30,26 @@ function iniciarSesion() {
     }
 }
 
+let usuario = {
+    nombre: '',
+    edad: 0,
+};
+
+let resultados = [];
+
+function capturarDatos() {
+    usuario.nombre = prompt("Ingresa tu nombre:");
+    usuario.edad = parseInt(prompt("Ingresa tu edad:"), 10);
+}
+
+function procesarDatos() {
+    let nuevaEdad = usuario.edad + 10;
+    resultados.push(nuevaEdad);
+}
+
+function mostrarResultados() {
+    alert(`Hola ${usuario.nombre}, tu edad en 10 años será: ${resultados[0]}`);
+}
+
 
 iniciarSesion();
