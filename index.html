@@ -3,15 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> HOME </title>
+    <title> DOGSHOUSE </title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
-    <header>
-        <h1> HOME 
-        </h1>
-    </header>
+    <!-- nota: revisar clases y codigos, ya que algunos no permiten cambios con el css (revisar mañana)-->
 
-    <script src="./js/script.js"></script>
+    <!-- Ventana de inicio de sesión -->
+        <div id="login" class="login1">
+            <div class="contentido1">
+                <h2>Iniciar sesión</h2>
+                <form onsubmit="return login(event)">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" id="usuario" required>
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" required>
+                    <button type="submit">Iniciar sesión</button>
+                </form>
+            </div>
+        </div>
+    
+    <!-- Menú de navegación -->
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Nosotros</a></li>
+                </ul>
+            </nav>
+        </header>
+    
+    <!-- Título centrado en la pantalla -->
+        <h1 class="titulo-principal">DOG'SHOUSE</h1>
+    
+    <!-- Sección de productos -->
+        <section class="productos">
+            <h2>Productos</h2>
+            <div class="producto">
+                <img src="./img/pretal.jpg" alt="pretal">
+                <p>Precio: $13.000</p>
+                <button onclick="agregarCarrito('pretal')">Agregar al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="./img/correa.jpg" alt="correa">
+                <p>Precio: $25.000</p>
+                <button onclick="agregarCarrito('correa')"> Agregar al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="./img/collar.webp" alt="collar">
+                <p>Precio: $9.000</p>
+                <button onclick="agregarCarrito('collar')">Agregar al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="./img/buzo-perro.jpeg" alt="buzo">
+                <p>Precio: $30.000</p>
+                <button onclick="agregarCarrito('buzo')">Agregar al carrito</button>
+            </div>
+        </section>
+    
+    <!-- Carrito -->
+        <section id="carrito">
+            <h2>Carrito de compras</h2>
+            <ul id="items-carrito"></ul>
+            <button onclick="realizarCompra()">Realizar compra</button>
+        </section>
+    
+        <script src="scripts.js"></script>
+   
 </body>
 </html>

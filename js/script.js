@@ -1,51 +1,47 @@
-// aca declaro las variables
-const usuarios = [
-    new Usuario("usuario1", "contrasena1"),
-    new Usuario("usuario2", "contrasena2"),
-];
+let carrito = [];
 
-let usuario = {
-    nombre: '',
-    edad: 0,
-};
+function agregarCarrito(producto) {
+    carrito.push(producto);
+    actualizarCarrito();
+}
 
-let resultados = [];
+function actualizarCarrito() {
+    const carritoList = document.getElementById("items-carrito");
+    carritoList.innerHTML = ""; 
 
-class Usuario {
-    constructor(nombre, contrasena) {
-        this.nombre = nombre;
-        this.contrasena = contrasena;
+    carrito.forEach((producto) => {
+        const li = document.createElement("li");
+        li.textContent = producto;
+        carritoList.appendChild(li);
+    });
+}
+
+function realizarCompra() {
+    if (carrito.length > 0) {
+        alert("Compra realizada con éxito");
+        carrito = []; 
+        actualizarCarrito();
+    } else {
+        alert("Se han eliminado los productos del carrito.");
     }
 }
 
-// converti la funcion flecha como se me aconsejo
-const verificarCredenciales = (nombre, contrasena) => {
-    return usuarios.some(usuario => usuario.nombre === nombre && usuario.contrasena === contrasena);
-};
+function login(event) {
+    event.preventDefault(); 
 
-const iniciarSesion = () => {
-    const nombre = prompt("Por favor, ingresa nombre de usuario:");
-    const contrasena = prompt("Por favor, ingresa contraseña:");
+    const usuario = document.getElementById("usuario").value;
+    const contrasena = document.getElementById("contrasena").value;
 
-    if (verificarCredenciales(nombre, contrasena)) {
-        alert("¡Inicio de sesión exitoso!");
+    if (usuario === "admin" && contrasena === "1234") {
+        // Si la sesion esta bien, oculta el login1 (anotar, queda solucionarlo)
+        document.getElementById("login").style.display = "none"; 
+        document.body.style.overflow = 'auto'; 
     } else {
-        alert("Nombre de usuario o contraseña incorrectos.");
+        alert("Usuario o contraseña incorrectos.");
     }
-};
+}
 
-const capturarDatos = () => {
-    usuario.nombre = prompt("Ingresa tu nombre:");
-    usuario.edad = parseInt(prompt("Ingresa tu edad:"), 10);
+window.onload = function() {
+    document.getElementById("login").style.display = "flex";
+    document.body.style.overflow = 'hidden'; 
 };
-
-const procesarDatos = () => {
-    const nuevaEdad = usuario.edad + 10;
-    resultados.push(nuevaEdad);
-};
-
-const mostrarResultados = () => {
-    alert(`Hola ${usuario.nombre}, tu edad en 10 años será: ${resultados[0]}`);
-};
-
-iniciarSesion();
